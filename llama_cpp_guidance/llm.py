@@ -65,27 +65,7 @@ class LlamaCpp(LLM):
         self.chat_mode = chat_mode
         self.role_to_name = role_to_name
 
-        print('sup')
         logger.debug(f"Instantiating LlamaCpp ({model_path})")
-        print('lllll')
-
-        # self.llm = Llama_index_llamacpp(
-        #     model_path = str(model_path),
-        #     model_kwargs={"n_gpu_layers": n_gpu_layers, "n_threads": n_threads, "n_ctx": n_ctx},
-        #     # verbose=False,
-        #   )
-        
-        # self.llm = Llama_index_llamacpp(
-        #     model_path=str(model_path),
-        #     # n_threads=n_threads,
-        #     # n_gpu_layers=n_gpu_layers,
-        #     model_kwargs={"n_gpu_layers": n_gpu_layers, "n_threads": n_threads, "n_ctx": n_ctx},
-        #     # n_ctx=n_ctx,
-        #     # logits_all=True,
-        #     verbose=False,
-        #     # seed=seed,
-        #     **llama_kwargs,
-        # )
 
         self.llm = Llama(
             model_path=str(model_path),
