@@ -4,6 +4,9 @@ from typing import Any, Dict, Iterator, List, Literal, Optional, Union
 
 import llama_cpp
 # from llama_index.llms import llama_cpp
+#from llama_index.llms import LlamaCPP as Llama_index_llamacpp
+
+
 from guidance.llms import LLM, LLMSession
 from llama_cpp import Completion, Llama, StoppingCriteriaList
 from loguru import logger
@@ -62,7 +65,27 @@ class LlamaCpp(LLM):
         self.chat_mode = chat_mode
         self.role_to_name = role_to_name
 
+        print('sup')
         logger.debug(f"Instantiating LlamaCpp ({model_path})")
+        print('lllll')
+
+        # self.llm = Llama_index_llamacpp(
+        #     model_path = str(model_path),
+        #     model_kwargs={"n_gpu_layers": n_gpu_layers, "n_threads": n_threads, "n_ctx": n_ctx},
+        #     # verbose=False,
+        #   )
+        
+        # self.llm = Llama_index_llamacpp(
+        #     model_path=str(model_path),
+        #     # n_threads=n_threads,
+        #     # n_gpu_layers=n_gpu_layers,
+        #     model_kwargs={"n_gpu_layers": n_gpu_layers, "n_threads": n_threads, "n_ctx": n_ctx},
+        #     # n_ctx=n_ctx,
+        #     # logits_all=True,
+        #     verbose=False,
+        #     # seed=seed,
+        #     **llama_kwargs,
+        # )
 
         self.llm = Llama(
             model_path=str(model_path),
@@ -74,6 +97,8 @@ class LlamaCpp(LLM):
             seed=seed,
             **llama_kwargs,
         )
+
+        print('hey')
         logger.debug("Llama instantiated")
         self._tokenizer = LlamaCppTokenizer(self.llm)
 
