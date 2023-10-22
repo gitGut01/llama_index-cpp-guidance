@@ -2,7 +2,8 @@ import os
 from pathlib import Path
 from typing import Any, Dict, Iterator, List, Literal, Optional, Union
 
-import llama_cpp
+# import llama_cpp
+from llama_index.llms import llama_cpp
 from guidance.llms import LLM, LLMSession
 from llama_cpp import Completion, Llama, StoppingCriteriaList
 from loguru import logger
